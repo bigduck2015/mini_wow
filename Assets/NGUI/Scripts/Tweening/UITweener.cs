@@ -195,7 +195,6 @@ public abstract class UITweener : IgnoreTimeScale
 			if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
 			{
 				eventReceiver.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
-                eventReceiver.SendMessage("OnNGUIMsg", new object[]{this, callWhenFinished}, SendMessageOptions.DontRequireReceiver);
 			}
 
 			// Disable this script unless the function calls above changed something

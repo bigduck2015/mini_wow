@@ -130,7 +130,6 @@ public class ActiveAnimation : IgnoreTimeScale
 				if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
 				{
 					eventReceiver.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
-                    eventReceiver.SendMessage("OnNGUIMsg", new object[]{this, callWhenFinished}, SendMessageOptions.DontRequireReceiver);
 				}
 
 				if (mDisableDirection != Direction.Toggle && mLastDirection == mDisableDirection)

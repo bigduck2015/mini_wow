@@ -173,7 +173,6 @@ public class UICheckbox : MonoBehaviour
 			if (eventReceiver != null && !string.IsNullOrEmpty(functionName))
 			{
 				eventReceiver.SendMessage(functionName, mChecked, SendMessageOptions.DontRequireReceiver);
-                eventReceiver.SendMessage("OnNGUIMsg", new object[]{mChecked, functionName}, SendMessageOptions.DontRequireReceiver);
 			}
 			current = null;
 

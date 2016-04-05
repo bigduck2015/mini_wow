@@ -640,20 +640,15 @@ public class UICamera : MonoBehaviour
 	/// Generic notification function. Used in place of SendMessage to shorten the code and allow for more than one receiver.
 	/// </summary>
 
-	static public void Notify(GameObject go, string funcName, object obj)
-    {
-        if (go != null)
-        {
-            go.SendMessage(funcName, obj, SendMessageOptions.DontRequireReceiver);
-            if (go != null)
-            {
-                go.SendMessage("OnNGUIMsg", new object[]{ obj, funcName }, SendMessageOptions.DontRequireReceiver);
-            }
+	static public void Notify (GameObject go, string funcName, object obj)
+	{
+		if (go != null)
+		{
+			go.SendMessage(funcName, obj, SendMessageOptions.DontRequireReceiver);
 
 			if (genericEventHandler != null && genericEventHandler != go)
 			{
 				genericEventHandler.SendMessage(funcName, obj, SendMessageOptions.DontRequireReceiver);
-                genericEventHandler.SendMessage("OnNGUIMsg", new object[]{obj, funcName}, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}

@@ -23,15 +23,12 @@ public class UIButtonKeyBinding : MonoBehaviour
 			if (Input.GetKeyDown(keyCode))
 			{
 				SendMessage("OnPress", true, SendMessageOptions.DontRequireReceiver);
-                SendMessage("OnNGUIMsg", new object[]{true, "OnPress"}, SendMessageOptions.DontRequireReceiver);
 			}
 
 			if (Input.GetKeyUp(keyCode))
 			{
 				SendMessage("OnPress", false, SendMessageOptions.DontRequireReceiver);
-                SendMessage("OnNGUIMsg", new object[]{false, "OnPress"}, SendMessageOptions.DontRequireReceiver);
 				SendMessage("OnClick", SendMessageOptions.DontRequireReceiver);
-                SendMessage("OnNGUIMsg", new object[]{null, "OnClick"}, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}

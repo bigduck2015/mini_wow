@@ -332,7 +332,6 @@ public class UISlider : IgnoreTimeScale
 			if (eventReceiver != null && !string.IsNullOrEmpty(functionName) && Application.isPlaying)
 			{
 				eventReceiver.SendMessage(functionName, stepValue, SendMessageOptions.DontRequireReceiver);
-                eventReceiver.SendMessage("OnNGUIMsg", new object[]{stepValue, functionName}, SendMessageOptions.DontRequireReceiver);
 			}
 			if (onValueChange != null) onValueChange(stepValue);
 			current = null;

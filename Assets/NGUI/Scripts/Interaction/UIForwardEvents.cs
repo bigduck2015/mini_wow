@@ -31,7 +31,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onHover && target != null)
 		{
 			target.SendMessage("OnHover", isOver, SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{isOver, "OnHover"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
@@ -40,7 +39,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onPress && target != null)
 		{
 			target.SendMessage("OnPress", pressed, SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{pressed, "OnPress"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 	
@@ -49,7 +47,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onClick && target != null)
 		{
 			target.SendMessage("OnClick", SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{null, "OnClick"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
@@ -58,7 +55,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onDoubleClick && target != null)
 		{
 			target.SendMessage("OnDoubleClick", SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{null, "OnDoubleClick"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
@@ -67,7 +63,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onSelect && target != null)
 		{
 			target.SendMessage("OnSelect", selected, SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{selected, "OnSelect"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
@@ -76,7 +71,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onDrag && target != null)
 		{
 			target.SendMessage("OnDrag", delta, SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{delta, "OnDrag"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
@@ -85,7 +79,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onDrop && target != null)
 		{
 			target.SendMessage("OnDrop", go, SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{go, "OnDrop"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
@@ -94,7 +87,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onInput && target != null)
 		{
 			target.SendMessage("OnInput", text, SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{text, "OnInput"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
@@ -103,7 +95,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onSubmit && target != null)
 		{
 			target.SendMessage("OnSubmit", SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{null, "OnSubmit"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
@@ -112,7 +103,6 @@ public class UIForwardEvents : MonoBehaviour
 		if (onScroll && target != null)
 		{
 			target.SendMessage("OnScroll", delta, SendMessageOptions.DontRequireReceiver);
-            target.SendMessage("OnNGUIMsg", new object[]{delta, "OnScroll"}, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }

@@ -329,7 +329,6 @@ public class UIInput : MonoBehaviour
 				if (mText != text) mKeyboard.text = mText;
 				UpdateLabel();
 				SendMessage("OnInputChanged", this, SendMessageOptions.DontRequireReceiver);
-                SendMessage("OnNGUIMsg", new object[]{this, "OnInputChanged"}, SendMessageOptions.DontRequireReceiver);
 			}
 
 			if (mKeyboard.done)
@@ -339,7 +338,6 @@ public class UIInput : MonoBehaviour
 				if (onSubmit != null) onSubmit(mText);
 				if (eventReceiver == null) eventReceiver = gameObject;
 				eventReceiver.SendMessage(functionName, mText, SendMessageOptions.DontRequireReceiver);
-                eventReceiver.SendMessage("OnNGUIMsg", new object[]{mText, functionName}, SendMessageOptions.DontRequireReceiver);
 				current = null;
 				selected = false;
 			}
@@ -409,7 +407,6 @@ public class UIInput : MonoBehaviour
 				{
 					mText = mText.Substring(0, mText.Length - 1);
 					SendMessage("OnInputChanged", this, SendMessageOptions.DontRequireReceiver);
-                    SendMessage("OnNGUIMsg", new object[]{this, "OnInputChanged"}, SendMessageOptions.DontRequireReceiver);
 				}
 			}
 			else if (c == '\r' || c == '\n')
@@ -424,7 +421,6 @@ public class UIInput : MonoBehaviour
 						if (onSubmit != null) onSubmit(mText);
 						if (eventReceiver == null) eventReceiver = gameObject;
 						eventReceiver.SendMessage(functionName, mText, SendMessageOptions.DontRequireReceiver);
-                        eventReceiver.SendMessage("OnNGUIMsg", new object[]{mText, functionName}, SendMessageOptions.DontRequireReceiver);
 						current = null;
 						selected = false;
 						return;
@@ -446,7 +442,6 @@ public class UIInput : MonoBehaviour
 
 				// Notify the listeners
 				SendMessage("OnInputChanged", this, SendMessageOptions.DontRequireReceiver);
-                SendMessage("OnNGUIMsg", new object[]{this, "OnInputChanged"}, SendMessageOptions.DontRequireReceiver);
 			}
 			else if (c >= ' ')
 			{
@@ -459,7 +454,6 @@ public class UIInput : MonoBehaviour
 				// Append the character and notify the "input changed" listeners.
 				mText += c;
 				SendMessage("OnInputChanged", this, SendMessageOptions.DontRequireReceiver);
-                SendMessage("OnNGUIMsg", new object[]{this, "OnInputChanged"}, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 

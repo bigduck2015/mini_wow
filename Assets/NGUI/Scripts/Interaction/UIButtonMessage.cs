@@ -57,34 +57,24 @@ public class UIButtonMessage : MonoBehaviour
 
 	void OnDoubleClick () { if (enabled && trigger == Trigger.OnDoubleClick) Send(); }
 
-	void Send()
-    {
-        if (string.IsNullOrEmpty(functionName))
-            return;
-        if (target == null)
-            target = gameObject;
+	void Send ()
+	{
+		if (string.IsNullOrEmpty(functionName)) return;
+		if (target == null) target = gameObject;
 
-        if (includeChildren)
-        {
-            Transform[] transforms = target.GetComponentsInChildren<Transform>();
+		if (includeChildren)
+		{
+			Transform[] transforms = target.GetComponentsInChildren<Transform>();
 
-            for (int i = 0, imax = transforms.Length; i < imax; ++i)
-            {
-                Transform t = transforms[i];
-                t.gameObject.SendMessage(functionName, gameObject, SendMessageOptions.DontRequireReceiver);
-                if (target != null)
-                {
-                    t.gameObject.SendMessage("OnNGUIMsg", new object[]{ gameObject, functionName }, SendMessageOptions.DontRequireReceiver);
-                }
-            }
-        }
-        else
-        {
-            target.SendMessage(functionName, gameObject, SendMessageOptions.DontRequireReceiver);
-            if (target != null)
-            {
-                target.SendMessage("OnNGUIMsg", new object[]{gameObject, functionName}, SendMessageOptions.DontRequireReceiver);
-            }
+			for (int i = 0, imax = transforms.Length; i < imax; ++i)
+			{
+				Transform t = transforms[i];
+				t.gameObject.SendMessage(functionName, gameObject, SendMessageOptions.DontRequireReceiver);
+			}
+		}
+		else
+		{
+			target.SendMessage(functionName, gameObject, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }

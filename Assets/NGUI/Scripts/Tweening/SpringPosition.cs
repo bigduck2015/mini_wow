@@ -87,7 +87,6 @@ public class SpringPosition : IgnoreTimeScale
 				if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
 				{
 					eventReceiver.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
-                    eventReceiver.SendMessage("OnNGUIMsg", new object[]{this, callWhenFinished}, SendMessageOptions.DontRequireReceiver);
 				}
 				enabled = false;
 			}
@@ -106,7 +105,6 @@ public class SpringPosition : IgnoreTimeScale
 				if (eventReceiver != null && !string.IsNullOrEmpty(callWhenFinished))
 				{
 					eventReceiver.SendMessage(callWhenFinished, this, SendMessageOptions.DontRequireReceiver);
-                    eventReceiver.SendMessage("OnNGUIMsg", new object[]{this, callWhenFinished}, SendMessageOptions.DontRequireReceiver);
 				}
 				enabled = false;
 			}
