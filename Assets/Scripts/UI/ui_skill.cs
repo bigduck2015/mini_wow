@@ -3,8 +3,13 @@ using System.Collections;
 
 public class ui_skill : MonoBehaviour 
 {
-    private Coroutine m_cur_skillco = null;
+    private Coroutine m_skill1Co = null;
     private GameObject m_slidebar = null;
+
+    void Awake()
+    {
+        delegates.delcurskill = OnSkill;
+    }
 
 	// Use this for initialization
 	void Start () 
@@ -18,18 +23,22 @@ public class ui_skill : MonoBehaviour
 	
 	}
 
-    void OnSpace()
+    void OnSkill(skilldata data)
     {
-        
+        Debug.Log("OnCast");
+        coctrl.instance.StartCoroutine("co_slidebar", slidebarCo(data.m_spendtime));
     }
 
-    void OnSkill1()
+    IEnumerator OnSkill1()
     {
-            var skilldata = cfgData.instance.m_dic_skilldata[0];
+        if (m_skill1Co == null)
+        {
+            m_skill1Co = coctrl.instance.StartCoroutine("co_skill1", player.instance.career.skill1());
 
-            coctrl.instance.StartCoroutine("co_skill1", player.instance.career.skill1(skilldata) );
+            yield return m_skill1Co;
 
-            StartCoroutine(slidebarCo(skilldata.m_spendtime));
+            m_skill1Co = null;
+        }
     }
     
     void OnSkill2()
@@ -79,13 +88,26 @@ public class ui_skill : MonoBehaviour
 
     IEnumerator slidebarCo(float time)
     {
+        int id = coctrl.instance.coid_Dic["co_slidebar"];
+
         UISlider slider = m_slidebar.GetComponent<UISlider>();
         slider.sliderValue = 0;
 
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
-            slider.sliderValue += (1/time)*0.01f;
+
+            if (id != coctrl.instance.coid_Dic["co_slidebar"])
+            {
+                break;
+            }
+
+			slider.sliderValue += (1 / time) * 0.01f;
+
+			if (slider.sliderValue == 1) 
+			{
+				break;
+			}
         }
     }
     

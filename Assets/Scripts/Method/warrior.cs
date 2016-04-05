@@ -3,7 +3,7 @@ using System.Collections;
 
 public class warrior : career 
 {
-    public IEnumerator skill1(skilldata data)
+    public IEnumerator skill1()
     {
         return null;
     }

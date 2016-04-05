@@ -3,7 +3,7 @@ using System.Collections;
 
 public interface career
 {
-    IEnumerator skill1(skilldata data);
+    IEnumerator skill1();
 
     IEnumerator skill2();
 
