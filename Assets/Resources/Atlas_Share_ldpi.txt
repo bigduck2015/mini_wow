@@ -1,0 +1,124 @@
+{"frames": {
+
+"bar1.png":
+{
+	"frame": {"x":1150,"y":107,"w":128,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":55},
+	"sourceSize": {"w":128,"h":55}
+},
+"bar2.png":
+{
+	"frame": {"x":1,"y":447,"w":871,"h":382},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":871,"h":382},
+	"sourceSize": {"w":871,"h":382}
+},
+"label1.png":
+{
+	"frame": {"x":873,"y":670,"w":412,"h":334},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":412,"h":334},
+	"sourceSize": {"w":412,"h":334}
+},
+"label2.png":
+{
+	"frame": {"x":925,"y":33,"w":224,"h":334},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":224,"h":334},
+	"sourceSize": {"w":224,"h":334}
+},
+"label3.png":
+{
+	"frame": {"x":1,"y":830,"w":566,"h":166},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":566,"h":166},
+	"sourceSize": {"w":566,"h":166}
+},
+"分割文字小圆点.png":
+{
+	"frame": {"x":1213,"y":13,"w":12,"h":12},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":12,"h":12},
+	"sourceSize": {"w":12,"h":12}
+},
+"加载图标 蓝色.png":
+{
+	"frame": {"x":1150,"y":264,"w":100,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+	"sourceSize": {"w":100,"h":100}
+},
+"加载图标.png":
+{
+	"frame": {"x":1150,"y":163,"w":100,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+	"sourceSize": {"w":100,"h":100}
+},
+"小背景.png":
+{
+	"frame": {"x":1,"y":1,"w":923,"h":445},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":923,"h":445},
+	"sourceSize": {"w":923,"h":445}
+},
+"弹出提示框-花边1.png":
+{
+	"frame": {"x":925,"y":1,"w":312,"h":11},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":312,"h":11},
+	"sourceSize": {"w":312,"h":11}
+},
+"弹出框.png":
+{
+	"frame": {"x":873,"y":447,"w":460,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":460,"h":222},
+	"sourceSize": {"w":460,"h":222}
+},
+"战斗胜利.png":
+{
+	"frame": {"x":1238,"y":1,"w":41,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":41,"h":41},
+	"sourceSize": {"w":41,"h":41}
+},
+"石头按键.png":
+{
+	"frame": {"x":1150,"y":43,"w":156,"h":63},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":156,"h":63},
+	"sourceSize": {"w":156,"h":63}
+},
+"花标.png":
+{
+	"frame": {"x":925,"y":13,"w":287,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":287,"h":19},
+	"sourceSize": {"w":287,"h":19}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "Atlas_Share_ldpi.png",
+	"format": "RGBA8888",
+	"size": {"w":1334,"h":1005},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:896d969621490306573491fdbbfa1327:1/1$"
+}
+}
