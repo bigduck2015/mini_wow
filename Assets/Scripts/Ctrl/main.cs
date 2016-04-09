@@ -17,6 +17,7 @@ public class main : MonoBehaviour
 
         skill1.m_id = 0;
         skill1.m_cd = 3;
+        skill1.m_pubcd = 1;
         skill1.m_name = "寒冰箭";
         skill1.m_damage = 5086f;
         skill1.m_spendtime = 2f;

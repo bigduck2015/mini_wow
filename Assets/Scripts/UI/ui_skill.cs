@@ -11,6 +11,7 @@ public class ui_skill : MonoBehaviour
     void Awake()
     {
         delegates.delcurskill = OnSkill;
+		delegates.delpubcd = OnPubCD;
     }
 
 	// Use this for initialization
@@ -25,6 +26,11 @@ public class ui_skill : MonoBehaviour
 	void Update () 
     {
 	
+	}
+
+	void OnPubCD (float time)
+	{
+		coctrl.instance.StartCoroutine("co_OnPubCD", publicCDCo(time));
 	}
 
     void OnSkill(skilldata data, GameObject skillbtn)
@@ -101,6 +107,34 @@ public class ui_skill : MonoBehaviour
         
     }
 
+	IEnumerator publicCDCo(float time)
+    {
+        int coid = coctrl.instance.coid_Dic["co_OnPubCD"];
+        var pubcd = GameObject.Find("PubCD/value").GetComponent<UILabel>();
+        float curcd = time;
+Debug.Log("curcd = " + curcd);
+        pubcd.text = curcd.ToString("F2");
+
+        while (true)
+        {
+            yield return null;
+
+            if (coid != coctrl.instance.coid_Dic["co_OnPubCD"])
+            {
+                break;
+            }
+
+			curcd -= Time.deltaTime;
+Debug.Log("curcd = " + curcd);
+			pubcd.text = curcd.ToString ("F2");
+			if (curcd <= 0) 
+			{
+				break;
+			}
+		}
+		
+	}
+
     IEnumerator skillCDCo(float time, GameObject btn)
     {
         int coid = coctrl.instance.coid_Dic["co_skillcd"];
@@ -110,18 +144,18 @@ Debug.Log("time = " + time);
         while (true)
         {
 Debug.Log("curCD = " + curCD);
-            label.text = curCD.ToString();
+            label.text = curCD.ToString("F2");
 
-            yield return new WaitForSeconds(1f);
+            yield return null;
 
             if (coid != coctrl.instance.coid_Dic["co_skillcd"])
             {
                 break;
             }
 
-            curCD--;
+			curCD -= Time.deltaTime;
 
-            if(curCD < 0)
+            if(curCD <= 0)
                 break;
         }
     }
@@ -134,16 +168,24 @@ Debug.Log("slidebarCo.time = " + time);
         UISlider slider = m_slidebar.GetComponent<UISlider>();
         slider.sliderValue = 0;
 
+		var SpendTime = GameObject.Find("SpendTime/value");
+		UILabel label_SpendTime = SpendTime.GetComponent<UILabel>();
+		float sptime = 0f;
+
         while (true)
         {
-            yield return new WaitForSeconds(0.02f);
+			label_SpendTime.text = sptime.ToString("F2");
+
+            yield return null;
+
+			sptime += Time.deltaTime; 
 
             if (id != coctrl.instance.coid_Dic["co_slidebar"])
             {
                 break;
             }
 
-			slider.sliderValue += (1 / 1) * 0.02f;
+			slider.sliderValue += (1 / time) * Time.deltaTime;
 
 			if (slider.sliderValue == 1) 
 			{

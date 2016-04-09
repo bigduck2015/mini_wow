@@ -16,7 +16,7 @@ public class cfgData
 public class skilldata
 {
     public int m_id; //技能id
-    public float m_pubcd;
+    public float m_pubcd; //技能公共cd
     public float m_cd; //cd
     public float m_damage; //伤害
     public string m_name; //技能名

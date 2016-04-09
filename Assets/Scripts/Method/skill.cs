@@ -8,6 +8,7 @@ public class skill
     public static IEnumerator PublicCDCo(float public_cd)
     {
         player.instance.SetPubCDState(1);
+		delegates.delpubcd(public_cd);
         yield return new WaitForSeconds(public_cd);
         player.instance.SetPubCDState(0);
     }
