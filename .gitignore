@@ -1,0 +1,10 @@
+Assembly-CSharp-Editor-vs.csproj
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp-vs.csproj
+Assembly-CSharp.csproj
+Library/
+Temp/
+mini_wow-csharp.sln
+mini_wow.sln
+mini_wow.userprefs
+obj/

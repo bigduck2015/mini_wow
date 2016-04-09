@@ -5,7 +5,7 @@ public class magic : career
 {
     
     //cast寒冰箭
-    public IEnumerator skill1()
+    public IEnumerator skill1(GameObject skillbtn)
     {
         var skilldata = cfgData.instance.m_dic_skilldata[0];
 
@@ -13,9 +13,10 @@ public class magic : career
 
         if (player.instance.public_cd == 0)
         {
+            delegates.delcurskill(skilldata, skillbtn);
+
             coctrl.instance.StartCoroutine(skill.PublicCDCo(skilldata.m_pubcd));
 
-            delegates.delcurskill(skilldata);
             yield return coctrl.instance.StartCoroutine(skill.CastTimeCo(skilldata.m_spendtime));
 
             if (coid == coctrl.instance.coid_Dic["co_skill1"])

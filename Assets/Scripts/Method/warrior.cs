@@ -3,7 +3,7 @@ using System.Collections;
 
 public class warrior : career 
 {
-    public IEnumerator skill1()
+    public IEnumerator skill1(GameObject skillbtn)
     {
         return null;
     }

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 43c2aeea4ce164a99a24768cb0c0551d
+TrueTypeFontImporter:
+  serializedVersion: 2
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 1
+  characterPadding: 0
+  includeFontData: 0
+  use2xBehaviour: 0
+  fontNames:
+  - Droid Sans Fallback
+  customCharacters: 
+  fontRenderingMode: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
