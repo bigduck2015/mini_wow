@@ -1,17 +1,21 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class main : MonoBehaviour 
+public class main 
 {
 
 	// Use this for initialization
-	void Start () 
+	public static void init () 
     {
         GameObject Global = GameObject.Find("Global");
 
         player.instance = Global.AddComponent<player>();
         coctrl.instance = Global.AddComponent<coctrl>();
 
+        player.instance.SetSkill(new magic());
+
+        boss.instance.sethp(100000f);
+        boss.instance.init();
 
         skilldata skill1 = new skilldata();
 
@@ -27,8 +31,4 @@ public class main : MonoBehaviour
         cfgData.instance.m_dic_skilldata[0] = skill1;
     }
 	
-	// Update is called once per frame
-	void Update (){
-	
-	}
 }

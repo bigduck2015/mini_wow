@@ -8,8 +8,7 @@ public class player : MonoBehaviour
 
     private float m_hp;
     private float m_mana;
-    private int m_public_cd = 0;
-    private career m_career = null;
+    private skill m_skill = null;
 
     void Awake()
     {
@@ -18,7 +17,7 @@ public class player : MonoBehaviour
 
 	void Start () 
 	{
-        m_career = new magic();
+
 	}
 	
 	void FixedUpdate () 
@@ -26,26 +25,17 @@ public class player : MonoBehaviour
 	
 	}
 
-    public career career
+    public skill skill
     {
         get
         {
-            return m_career;
+            return m_skill;
         }
     }
 
-    public int public_cd
+    public void SetSkill(skill skill)
     {
-        get
-        {
-            return m_public_cd;
-        }
+        m_skill = skill;
     }
-
-    public void SetPubCDState(int state)
-    {
-        m_public_cd = state;
-    }
-
 
 }
