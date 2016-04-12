@@ -12,7 +12,7 @@ public class main
         player.instance = Global.AddComponent<player>();
         coctrl.instance = Global.AddComponent<coctrl>();
 
-        player.instance.SetSkill(new magic());
+        skill.instance = new magic();
 
         boss.instance.sethp(100000f);
         boss.instance.init();

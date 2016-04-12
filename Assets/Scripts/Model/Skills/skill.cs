@@ -3,6 +3,14 @@ using System.Collections;
 
 public class skill 
 {
+    public static skill instance = new skill();
+
+    public delegate void skillstart(skilldata data, GameObject obj);
+    public delegate void skillfinish(skilldata data, GameObject obj);
+
+    public static skillstart del_skillstart;
+    public static skillfinish del_skillfinish;
+
     private int m_public_cd = 0;
 
     public int public_cd

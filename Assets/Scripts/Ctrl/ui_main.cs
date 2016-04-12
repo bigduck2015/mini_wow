@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class ui_main : MonoBehaviour 
 {
-    private Coroutine m_skill1Co = null;
     private GameObject m_slidebar = null;
     private GameObject m_fighttime = null;
     private Dictionary<int, GameObject> m_dic_skillbtn = new Dictionary<int, GameObject>();
@@ -12,7 +11,9 @@ public class ui_main : MonoBehaviour
 
     void Awake()
     {
-        delegates.delcurskill = OnSkill;
+        skill.del_skillstart = OnSkillStart;
+        skill.del_skillfinish = OnSkillFinished;
+
 		delegates.delpubcd = OnPubCD;
         delegates.deldps = OnDPS;
         delegates.delfighttime = OnFightTime;
@@ -53,8 +54,14 @@ public class ui_main : MonoBehaviour
 		coctrl.instance.StartCoroutine("co_OnPubCD", publicCDCo(time));
 	}
 
-    void OnSkill(skilldata data, GameObject skillbtn)
+    void OnSkillFinished(skilldata data, GameObject skillbtn)
     {
+        skillbtn.GetComponent<UIButtonMessage>().enabled = true;
+    }
+
+    void OnSkillStart(skilldata data, GameObject skillbtn)
+    {
+        skillbtn.GetComponent<UIButtonMessage>().enabled = false;
         coctrl.instance.StartCoroutine("co_OnSkill", OnSkillCo(data,skillbtn));
     }
 
@@ -70,16 +77,9 @@ public class ui_main : MonoBehaviour
         }
     }
 
-    IEnumerator OnSkill1()
+    void OnSkill1()
     {
-        if (m_skill1Co == null)
-        {
-            m_skill1Co = coctrl.instance.StartCoroutine("co_skill1", player.instance.skill.skill1(m_dic_skillbtn[0]));
-
-            yield return m_skill1Co;
-
-            m_skill1Co = null;
-        }
+        coctrl.instance.StartCoroutine("co_skill1", skill.instance.skill1(m_dic_skillbtn[0]));
     }
     
     void OnSkill2()

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class magic : skill 
 {
-    
+
     //cast寒冰箭
     public override IEnumerator skill1(GameObject skillbtn)
     {
@@ -13,17 +13,19 @@ public class magic : skill
 
         if (public_cd == 0)
         {
-            delegates.delcurskill(skilldata, skillbtn);
+            del_skillstart(skilldata, skillbtn);
 
-            coctrl.instance.StartCoroutine(player.instance.skill.PublicCDCo(skilldata.m_pubcd));
+            coctrl.instance.StartCoroutine(PublicCDCo(skilldata.m_pubcd));
 
-            yield return coctrl.instance.StartCoroutine(player.instance.skill.CastTimeCo(skilldata.m_spendtime));
+            yield return coctrl.instance.StartCoroutine(CastTimeCo(skilldata.m_spendtime));
 
             if (coid == coctrl.instance.coid_Dic["co_skill1"])
             {
                 delegates.deldamage(skilldata.m_damage);
-                yield return coctrl.instance.StartCoroutine(player.instance.skill.CDTimeCo(skilldata.m_cd));
+                yield return coctrl.instance.StartCoroutine(CDTimeCo(skilldata.m_cd));
             }
+
+            del_skillfinish(skilldata, skillbtn);
         }
     }
 
