@@ -47,7 +47,7 @@ public class loadCSV
     
     private void AddNewDataLine(string newDataLine)
     {
-        string[] dataArray = newDataLine.Split('\t');
+        string[] dataArray = newDataLine.Split(';');
 		this.rowAL.Add(dataArray);
     }
 	

@@ -7,6 +7,7 @@ public class magic : skill
     //cast寒冰箭
     public override IEnumerator skill1(GameObject skillbtn)
     {
+//Debug.LogError("1");
         var skilldata = cfgData.instance.m_dic_skilldata[0];
 
         int coid = coctrl.instance.coid_Dic["co_skill1"];
@@ -27,6 +28,7 @@ public class magic : skill
 
             del_skillfinish(skilldata, skillbtn);
         }
+//Debug.LogError("2");
     }
 
     public override IEnumerator skill2(GameObject skillbtn)

@@ -27,7 +27,7 @@ public class ui_main : MonoBehaviour
         m_fighttime = GameObject.Find("Time");
         m_dic_skillbtn[0] = GameObject.Find("Btn1");
 
-        main.init();
+        //main.init();
 	}
 	
 	// Update is called once per frame
@@ -79,7 +79,13 @@ public class ui_main : MonoBehaviour
 
     void OnSkill1()
     {
-        coctrl.instance.StartCoroutine("co_skill1", skill.instance.skill1(m_dic_skillbtn[0]));
+//Debug.LogError("OnSkill1.1");
+        var btn = m_dic_skillbtn[0];
+//Debug.LogError("OnSkill1.2");
+        var itor = skill.instance.skill1(btn);
+//Debug.LogError("OnSkill1.3");
+        coctrl.instance.StartCoroutine("co_skill1", itor);
+//Debug.LogError("OnSkill1.4");
     }
     
     void OnSkill2()
