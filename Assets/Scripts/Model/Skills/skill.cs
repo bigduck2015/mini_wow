@@ -42,20 +42,50 @@ public class skill
         yield return new WaitForSeconds(time);
     }
 
-    public virtual IEnumerator skill1(GameObject skillbtn)
+    public virtual IEnumerator skilllogic(skilldata skilldata, GameObject skillbtn, string cokey)
+    {
+        int coid = coctrl.instance.coid_Dic[cokey];
+
+        if (public_cd == 0)
+        {
+            del_skillstart(skilldata, skillbtn);
+
+            coctrl.instance.StartCoroutine(PublicCDCo(skilldata.m_pubcd));
+
+            yield return coctrl.instance.StartCoroutine(CastTimeCo(skilldata.m_spendtime));
+
+            if (coid == coctrl.instance.coid_Dic[cokey])
+            {
+                delegates.deldamage(skilldata.m_damage);
+                yield return coctrl.instance.StartCoroutine(CDTimeCo(skilldata.m_cd));
+            }
+
+            del_skillfinish(skilldata, skillbtn);
+        }
+    }
+
+    public virtual skilldata getskilldata(int index)
     {
         return null;
     }
 
-    public virtual IEnumerator skill2(GameObject skillbtn)
-    {
-        return null;
-    }
+    public virtual void skill1(GameObject skillbtn){}
 
-    public virtual IEnumerator skill3(GameObject skillbtn)
-    {
-        return null;
-    }
+    public virtual void skill2(GameObject skillbtn){}
+
+    public virtual void skill3(GameObject skillbtn){}
+
+    public virtual void skill4(GameObject skillbtn){}
+    
+    public virtual void skill5(GameObject skillbtn){}
+    
+    public virtual void skill6(GameObject skillbtn){}
+    
+    public virtual void skill7(GameObject skillbtn){}
+    
+    public virtual void skill8(GameObject skillbtn){}
+    
+    public virtual void skill9(GameObject skillbtn){}
 
 
 }

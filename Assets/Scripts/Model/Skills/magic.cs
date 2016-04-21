@@ -3,41 +3,63 @@ using System.Collections;
 
 public class magic : skill 
 {
+    public override skilldata getskilldata(int index)
+    {
+        return cfgData.instance.m_dic_skilldata[index-1];
+    }
 
     //cast寒冰箭
-    public override IEnumerator skill1(GameObject skillbtn)
+    public override void skill1(GameObject skillbtn)
     {
-//Debug.LogError("1");
         var skilldata = cfgData.instance.m_dic_skilldata[0];
-
-        int coid = coctrl.instance.coid_Dic["co_skill1"];
-
-        if (public_cd == 0)
-        {
-            del_skillstart(skilldata, skillbtn);
-
-            coctrl.instance.StartCoroutine(PublicCDCo(skilldata.m_pubcd));
-
-            yield return coctrl.instance.StartCoroutine(CastTimeCo(skilldata.m_spendtime));
-
-            if (coid == coctrl.instance.coid_Dic["co_skill1"])
-            {
-                delegates.deldamage(skilldata.m_damage);
-                yield return coctrl.instance.StartCoroutine(CDTimeCo(skilldata.m_cd));
-            }
-
-            del_skillfinish(skilldata, skillbtn);
-        }
-//Debug.LogError("2");
+        coctrl.instance.StartCoroutine("co_skill1", skilllogic(skilldata, skillbtn, "co_skill1"));
     }
 
-    public override IEnumerator skill2(GameObject skillbtn)
+    public override void skill2(GameObject skillbtn)
     {
-        return null;
+        var skilldata = cfgData.instance.m_dic_skilldata[1];
+        coctrl.instance.StartCoroutine("co_skill2", skilllogic(skilldata, skillbtn, "co_skill2"));
     }
 
-    public override IEnumerator skill3(GameObject skillbtn)
+    public override void skill3(GameObject skillbtn)
     {
-        return null;
+        var skilldata = cfgData.instance.m_dic_skilldata[2];
+        coctrl.instance.StartCoroutine("co_skill3", skilllogic(skilldata, skillbtn, "co_skill3"));
+    }
+
+    public override void skill4(GameObject skillbtn)
+    {
+        var skilldata = cfgData.instance.m_dic_skilldata[3];
+        coctrl.instance.StartCoroutine("co_skill4", skilllogic(skilldata, skillbtn, "co_skill4"));
+    }
+
+    public override void skill5(GameObject skillbtn)
+    {
+        var skilldata = cfgData.instance.m_dic_skilldata[4];
+        coctrl.instance.StartCoroutine("co_skill5", skilllogic(skilldata, skillbtn, "co_skill5"));
+    }
+
+    public override void skill6(GameObject skillbtn)
+    {
+        var skilldata = cfgData.instance.m_dic_skilldata[5];
+        coctrl.instance.StartCoroutine("co_skill6", skilllogic(skilldata, skillbtn, "co_skill6"));
+    }
+
+    public override void skill7(GameObject skillbtn)
+    {
+        var skilldata = cfgData.instance.m_dic_skilldata[6];
+        coctrl.instance.StartCoroutine("co_skill7", skilllogic(skilldata, skillbtn, "co_skill7"));
+    }
+
+    public override void skill8(GameObject skillbtn)
+    {
+        var skilldata = cfgData.instance.m_dic_skilldata[7];
+        coctrl.instance.StartCoroutine("co_skill8", skilllogic(skilldata, skillbtn, "co_skill8"));
+    }
+
+    public override void skill9(GameObject skillbtn)
+    {
+        var skilldata = cfgData.instance.m_dic_skilldata[8];
+        coctrl.instance.StartCoroutine("co_skill9", skilllogic(skilldata, skillbtn, "co_skill9"));
     }
 }

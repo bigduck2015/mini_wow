@@ -27,9 +27,50 @@ public class ui_main : MonoBehaviour
         m_fighttime = GameObject.Find("Time");
         m_dic_skillbtn[0] = GameObject.Find("Btn1");
 
-        //main.init();
+        initskillbtn();
 	}
 	
+    void initskillbtn()
+    {
+        var SkillBtns = this.gameObject.transform.Find("SkillBtns");
+
+        skilldata data1 = skill.instance.getskilldata(1);
+        m_dic_skillbtn[0] = SkillBtns.Find("Grid1/Btn1").gameObject;
+        SkillBtns.Find("Grid1/Btn1/name").GetComponent<UILabel>().text = data1.m_name;
+
+        skilldata data2 = skill.instance.getskilldata(2);
+        m_dic_skillbtn[1] = SkillBtns.Find("Grid1/Btn2").gameObject;
+        SkillBtns.Find("Grid1/Btn2/name").GetComponent<UILabel>().text = data2.m_name;
+
+        skilldata data3 = skill.instance.getskilldata(3);
+        m_dic_skillbtn[2] = SkillBtns.Find("Grid1/Btn3").gameObject;
+        SkillBtns.Find("Grid1/Btn3/name").GetComponent<UILabel>().text = data3.m_name;
+
+        skilldata data4 = skill.instance.getskilldata(4);
+        m_dic_skillbtn[3] = SkillBtns.Find("Grid2/Btn1").gameObject;
+        SkillBtns.Find("Grid2/Btn1/name").GetComponent<UILabel>().text = data4.m_name;
+
+        skilldata data5 = skill.instance.getskilldata(5);
+        m_dic_skillbtn[4] = SkillBtns.Find("Grid2/Btn2").gameObject;
+        SkillBtns.Find("Grid2/Btn2/name").GetComponent<UILabel>().text = data5.m_name;
+
+        skilldata data6 = skill.instance.getskilldata(6);
+        m_dic_skillbtn[5] = SkillBtns.Find("Grid2/Btn3").gameObject;
+        SkillBtns.Find("Grid2/Btn3/name").GetComponent<UILabel>().text = data6.m_name;
+
+        skilldata data7 = skill.instance.getskilldata(7);
+        m_dic_skillbtn[6] = SkillBtns.Find("Grid3/Btn1").gameObject;
+        SkillBtns.Find("Grid3/Btn1/name").GetComponent<UILabel>().text = data7.m_name;
+
+        skilldata data8 = skill.instance.getskilldata(8);
+        m_dic_skillbtn[7] = SkillBtns.Find("Grid3/Btn2").gameObject;
+        SkillBtns.Find("Grid3/Btn2/name").GetComponent<UILabel>().text = data8.m_name;
+
+        skilldata data9 = skill.instance.getskilldata(9);
+        m_dic_skillbtn[8] = SkillBtns.Find("Grid3/Btn3").gameObject;
+        SkillBtns.Find("Grid3/Btn3/name").GetComponent<UILabel>().text = data9.m_name;
+    }
+
 	// Update is called once per frame
 	void Update () 
     {
@@ -79,58 +120,48 @@ public class ui_main : MonoBehaviour
 
     void OnSkill1()
     {
-//Debug.LogError("OnSkill1.1");
-        var btn = m_dic_skillbtn[0];
-//Debug.LogError("OnSkill1.2");
-        var itor = skill.instance.skill1(btn);
-//Debug.LogError("OnSkill1.3");
-        coctrl.instance.StartCoroutine("co_skill1", itor);
-//Debug.LogError("OnSkill1.4");
+        skill.instance.skill1(m_dic_skillbtn[0]);
     }
     
     void OnSkill2()
     {
-        
+        Debug.LogError("OnSkill2");
+        skill.instance.skill2(m_dic_skillbtn[1]);
     }
 
     void OnSkill3()
     {
-        
+        skill.instance.skill3(m_dic_skillbtn[2]);
     }
 
     void OnSkill4()
     {
-        
+        skill.instance.skill4(m_dic_skillbtn[3]);
     }
 
     void OnSkill5()
     {
-        
+        skill.instance.skill5(m_dic_skillbtn[4]);
     }
 
     void OnSkill6()
     {
-        
+        skill.instance.skill6(m_dic_skillbtn[5]);
     }
 
     void OnSkill7()
     {
-        
+        skill.instance.skill7(m_dic_skillbtn[6]);
     }
 
     void OnSkill8()
     {
-        
+        skill.instance.skill8(m_dic_skillbtn[7]);
     }
 
     void OnSkill9()
     {
-        
-    }
-
-    void OnSkill10()
-    {
-        
+        skill.instance.skill9(m_dic_skillbtn[8]);
     }
 
 	IEnumerator publicCDCo(float time)
