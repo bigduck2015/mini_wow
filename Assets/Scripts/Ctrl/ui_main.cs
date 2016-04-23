@@ -13,6 +13,8 @@ public class ui_main : MonoBehaviour
     {
         skill.del_skillstart = OnSkillStart;
         skill.del_skillfinish = OnSkillFinished;
+        skill.del_casttime = OnCast;
+        skill.del_cdtime = OnCD;
 
 		delegates.delpubcd = OnPubCD;
         delegates.deldps = OnDPS;
@@ -77,6 +79,16 @@ public class ui_main : MonoBehaviour
 	
 	}
     
+    void OnCD(int id, float time)
+    {
+        coctrl.instance.StartCoroutine(skillCDCo(id, time));
+    }
+
+    void OnCast(float time)
+    {
+        coctrl.instance.StartCoroutine("CastCo", CastCo(time));
+    }
+
     void OnFightTime(int time)
     {
         int min = time / 60;
@@ -95,27 +107,14 @@ public class ui_main : MonoBehaviour
 		coctrl.instance.StartCoroutine("co_OnPubCD", publicCDCo(time));
 	}
 
-    void OnSkillFinished(skilldata data, GameObject skillbtn)
+    void OnSkillStart(int id)
     {
-        skillbtn.GetComponent<UIButtonMessage>().enabled = true;
+        m_dic_skillbtn[id].GetComponent<UIButtonMessage>().enabled = false;
     }
 
-    void OnSkillStart(skilldata data, GameObject skillbtn)
+    void OnSkillFinished(int id)
     {
-        skillbtn.GetComponent<UIButtonMessage>().enabled = false;
-        coctrl.instance.StartCoroutine("co_OnSkill", OnSkillCo(data,skillbtn));
-    }
-
-    IEnumerator OnSkillCo(skilldata data, GameObject skillbtn)
-    {
-        int coid = coctrl.instance.coid_Dic["co_OnSkill"];
-
-        yield return coctrl.instance.StartCoroutine("co_slidebar", slidebarCo(data.m_spendtime));
-
-        if (coid == coctrl.instance.coid_Dic["co_OnSkill"])
-        {
-            coctrl.instance.StartCoroutine("co_skillcd", skillCDCo(data.m_cd, skillbtn));
-        }
+        m_dic_skillbtn[id].GetComponent<UIButtonMessage>().enabled = true;
     }
 
     void OnSkill1()
@@ -125,7 +124,6 @@ public class ui_main : MonoBehaviour
     
     void OnSkill2()
     {
-        Debug.LogError("OnSkill2");
         skill.instance.skill2(m_dic_skillbtn[1]);
     }
 
@@ -192,10 +190,13 @@ Debug.Log("curcd = " + curcd);
 		
 	}
 
-    IEnumerator skillCDCo(float time, GameObject btn)
+    IEnumerator skillCDCo(int id, float time)
     {
-        int coid = coctrl.instance.coid_Dic["co_skillcd"];
+        //int coid = coctrl.instance.coid_Dic["co_skillcd"];
+        GameObject btn = m_dic_skillbtn[id];
+
         float curCD = time;
+
         UILabel label = btn.transform.Find("cd").GetComponent<UILabel>();
 Debug.Log("time = " + time);
         while (true)
@@ -205,10 +206,10 @@ Debug.Log("curCD = " + curCD);
 
             yield return null;
 
-            if (coid != coctrl.instance.coid_Dic["co_skillcd"])
-            {
-                break;
-            }
+//            if (coid != coctrl.instance.coid_Dic["co_skillcd"])
+//            {
+//                break;
+//            }
 
 			curCD -= Time.deltaTime;
 
@@ -217,37 +218,36 @@ Debug.Log("curCD = " + curCD);
         }
     }
 
-    IEnumerator slidebarCo(float time)
+    public IEnumerator CastCo(float time)
     {
-Debug.Log("slidebarCo.time = " + time);
-        int id = coctrl.instance.coid_Dic["co_slidebar"];
+        int coid = coctrl.instance.coid_Dic["CastCo"];
 
+        float totaltime = 0f;
         UISlider slider = m_slidebar.GetComponent<UISlider>();
         slider.sliderValue = 0;
 
-		var SpendTime = GameObject.Find("SpendTime/value");
-		UILabel label_SpendTime = SpendTime.GetComponent<UILabel>();
-		float sptime = 0f;
+        var SpendTime = GameObject.Find("SpendTime/value");
+        UILabel label_SpendTime = SpendTime.GetComponent<UILabel>();
 
         while (true)
         {
-			label_SpendTime.text = sptime.ToString("F2");
-
             yield return null;
-
-			sptime += Time.deltaTime; 
-
-            if (id != coctrl.instance.coid_Dic["co_slidebar"])
+ 
+            if (coid != coctrl.instance.coid_Dic["CastCo"])
             {
                 break;
             }
 
-			slider.sliderValue += (1 / time) * Time.deltaTime;
+            totaltime += Time.deltaTime;
 
-			if (slider.sliderValue == 1) 
-			{
-				break;
-			}
+            label_SpendTime.text = totaltime.ToString("F2");
+
+            slider.sliderValue += totaltime/time;
+
+            if (totaltime >= time)
+            {
+                break;
+            }
         }
     }
     

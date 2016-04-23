@@ -64,7 +64,7 @@ public class ui_start : MonoBehaviour
                         data.m_damage = reader.GetFloat(row, col);
                         break;
                     case 5:
-                        data.m_dottime = reader.GetFloat(row, col);
+                        data.m_bufftime = reader.GetFloat(row, col);
                         break;
                     case 6:
                         data.m_pubcd = reader.GetFloat(row, col);

@@ -21,7 +21,7 @@ public class skilldata
     public float m_damage; //伤害
     public string m_name; //技能名
     public float m_spendtime; //施放时长
-    public float m_dottime; //持续时间
+    public float m_bufftime; //持续时间
     public string m_description; //效果描述
 }
 

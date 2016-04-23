@@ -8,17 +8,43 @@ public class magic : skill
         return cfgData.instance.m_dic_skilldata[index-1];
     }
 
-    //cast寒冰箭
+    //寒冰箭
     public override void skill1(GameObject skillbtn)
     {
         var skilldata = cfgData.instance.m_dic_skilldata[0];
         coctrl.instance.StartCoroutine("co_skill1", skilllogic(skilldata, skillbtn, "co_skill1"));
     }
 
+    //冰霜血脉
     public override void skill2(GameObject skillbtn)
     {
         var skilldata = cfgData.instance.m_dic_skilldata[1];
-        coctrl.instance.StartCoroutine("co_skill2", skilllogic(skilldata, skillbtn, "co_skill2"));
+        coctrl.instance.StartCoroutine("skill2co", skill2co(skilldata, skillbtn));
+    }
+
+    IEnumerator skill2co(skilldata skilldata, GameObject skillbtn)
+    {
+        int coid = coctrl.instance.coid_Dic["skill2co"];
+
+        if (public_cd == 0)
+        {
+            del_skillstart(skilldata.m_id);
+
+            coctrl.instance.StartCoroutine(PublicCDCo(skilldata.m_pubcd));
+
+            coctrl.instance.StartCoroutine(BuffSpeedCo(0.8f, skilldata.m_bufftime));
+
+            yield return coctrl.instance.StartCoroutine(CastTimeCo(skilldata.m_spendtime * m_speedrate));
+
+            if (coid == coctrl.instance.coid_Dic["skill2co"])
+            {
+                delegates.deldamage(skilldata.m_damage);
+
+                coctrl.instance.StartCoroutine(CDTimeCo(skilldata));
+            }
+
+            del_skillfinish(skilldata.m_id);
+        }
     }
 
     public override void skill3(GameObject skillbtn)
