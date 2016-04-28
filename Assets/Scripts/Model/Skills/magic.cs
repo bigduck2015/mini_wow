@@ -32,15 +32,15 @@ public class magic : skill
 
             coctrl.instance.StartCoroutine(PublicCDCo(skilldata.m_pubcd));
 
-            coctrl.instance.StartCoroutine(BuffSpeedCo(0.8f, skilldata.m_bufftime));
+            coctrl.instance.StartCoroutine("SpeedCo", buff.instance.SpeedCo(0.8f, skilldata.m_bufftime));
 
-            yield return coctrl.instance.StartCoroutine(CastTimeCo(skilldata.m_spendtime * m_speedrate));
+            yield return coctrl.instance.StartCoroutine(CastTimeCo(skilldata.m_spendtime * speedrate));
 
             if (coid == coctrl.instance.coid_Dic["skill2co"])
             {
                 delegates.deldamage(skilldata.m_damage);
 
-                coctrl.instance.StartCoroutine(CDTimeCo(skilldata));
+                yield return coctrl.instance.StartCoroutine(CDTimeCo(skilldata));
             }
 
             del_skillfinish(skilldata.m_id);

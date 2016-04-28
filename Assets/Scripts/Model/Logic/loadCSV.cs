@@ -9,13 +9,19 @@ using System.IO;
 public class loadCSV 
 {
 	
-	private ArrayList rowAL;         //行链表,CSV文件的每一行就是一个链
+	private ArrayList m_rowAL;         //行链表,CSV文件的每一行就是一个链
 	
-	// Use this for initialization
+    public int rowCount
+    {
+        get
+        { 
+            return m_rowAL.Count;
+        }
+    }
 	
 	public loadCSV() 
 	{
-		rowAL = new ArrayList();
+		m_rowAL = new ArrayList();
 	}
 	
 	public void LoadCSV(string path)
@@ -48,7 +54,7 @@ public class loadCSV
     private void AddNewDataLine(string newDataLine)
     {
         string[] dataArray = newDataLine.Split(';');
-		this.rowAL.Add(dataArray);
+		this.m_rowAL.Add(dataArray);
     }
 	
 	public int GetInt(int row,int col)
@@ -59,7 +65,7 @@ public class loadCSV
 			return integer;
 		else
 		{
-			Debug.LogError("Can not parse to intiger!");
+			//Debug.LogError("Can not parse to intiger!");
 			return -1;
 		}
 	}
@@ -68,12 +74,12 @@ public class loadCSV
 	{
 		try
 		{
-			if(row > rowAL.Count)
+			if(row > m_rowAL.Count)
 			{
 				return null;
 			}
 			
-			string[] strArray = rowAL[row-1] as string[];
+			string[] strArray = m_rowAL[row-1] as string[];
 			
 			if(col > strArray.Length)
 			{
@@ -99,9 +105,9 @@ public class loadCSV
 			return fValue;
 		else
 		{
-			Debug.LogError("Can not parse to float!");
+			//Debug.LogError("Can not parse to float!");
 			return -1;
 		}
-	}
+	} 
 	
 }

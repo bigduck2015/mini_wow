@@ -8,9 +8,6 @@ public class cfgData
 
     public Dictionary<int,skilldata> m_dic_skilldata = new Dictionary<int, skilldata>();
     public Dictionary<int,buffdata> m_dic_buffdata = new Dictionary<int, buffdata>();
-    
-
-    
 }
 
 public class skilldata
@@ -23,6 +20,14 @@ public class skilldata
     public float m_spendtime; //施放时长
     public float m_bufftime; //持续时间
     public string m_description; //效果描述
+    public Dictionary<int, skillbuff> m_buffdic = new Dictionary<int, skillbuff>();
+
+    public struct skillbuff
+    {
+        public int m_id;
+        public float m_rate;
+        public float m_dottime;
+    }
 }
 
 public class buffdata

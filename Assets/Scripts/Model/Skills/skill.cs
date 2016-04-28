@@ -16,7 +16,7 @@ public class skill
     public static cdtime del_cdtime;
 
     private int m_public_cd = 0;
-    protected float m_speedrate = 0f; //施法速率
+    protected float m_speedrate = 1f; //施法速率
 
     public int public_cd
     {
@@ -24,6 +24,19 @@ public class skill
         {
             return m_public_cd;
         }
+    }
+
+    public float speedrate
+    {
+        get
+        {
+            return m_speedrate;
+        }
+    }
+
+    public void Setspeedrate(float rate)
+    {
+        m_speedrate = rate;
     }
 
     //公共CD
@@ -49,14 +62,6 @@ public class skill
         yield return new WaitForSeconds(time);
     }
 
-    //buff持续时间
-    public IEnumerator BuffSpeedCo(float rate, float time)
-    {
-        m_speedrate = rate;
-        yield return new WaitForSeconds(time);
-        m_speedrate = 1f;
-    }
-
     public virtual IEnumerator skilllogic(skilldata skilldata, GameObject skillbtn, string cokey)
     {
         int coid = coctrl.instance.coid_Dic[cokey];
@@ -66,6 +71,9 @@ public class skill
             del_skillstart(skilldata.m_id);
 
             coctrl.instance.StartCoroutine(PublicCDCo(skilldata.m_pubcd));
+
+Debug.LogError("skilldata.m_spendtime = " + skilldata.m_spendtime);
+Debug.LogError("m_speedrate = " + m_speedrate);
 
             yield return coctrl.instance.StartCoroutine(CastTimeCo(skilldata.m_spendtime * m_speedrate));
 

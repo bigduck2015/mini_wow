@@ -86,6 +86,7 @@ public class ui_main : MonoBehaviour
 
     void OnCast(float time)
     {
+        Debug.LogError("OnCast.time = " + time);
         coctrl.instance.StartCoroutine("CastCo", CastCo(time));
     }
 
@@ -242,7 +243,7 @@ Debug.Log("curCD = " + curCD);
 
             label_SpendTime.text = totaltime.ToString("F2");
 
-            slider.sliderValue += totaltime/time;
+            slider.sliderValue += Time.deltaTime/time;
 
             if (totaltime >= time)
             {
